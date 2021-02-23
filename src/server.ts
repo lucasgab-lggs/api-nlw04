@@ -1,22 +1,12 @@
+import 'reflect-metadata';
 import express from 'express';
+import './database';
+import { router } from './routes';
 
 const app = express();
 
-/**
- * MÉTODOS HTTP:
- * GET => Buscar
- * POST => Salvar
- * PUT => Alterar
- * DELETE => Deletar
- * PATCH => Alteração Específica
- */
+app.use(express.json());
 
- app.get("/", (request, response) => {
-    return response.send("Hello World!")
- });
+app.use(router);
 
- app.post("/", (request, response) => {
-     return response.send("Dados gravados com sucesso!")
- })
-
-app.listen(3334, () => console.log("Server is running!"));
+app.listen(3333, () => console.log("Server is running!"));
